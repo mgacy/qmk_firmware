@@ -40,6 +40,8 @@
 #define PRV_WIN   LGUI(S(KC_GRV))     // MAC: switch to prev window within an application
 #define NXT_TAB   LCTL(KC_TAB)        // MAC: switch to next tab within an application
 #define PRV_TAB   LCTL(S(KC_TAB))     // MAC: switch to prev tab within an application
+#define NXT_ATB   LGUI(S(KC_RBRC))    // MAC: switch to next tab within an application (Shift+Cmnd+])
+#define PRV_ATB   LGUI(S(KC_LBRC))    // MAC: switch to prev tab within an application (Shift+Cmnd+[)
 #define SPC_ONE   LCTL(KC_1)          // MAC: switch to space 1
 #define SPC_TWO   LCTL(KC_2)          // MAC: switch to space 2
 #define SPC_THR   LCTL(KC_3)          // MAC: switch to space 3
@@ -125,9 +127,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------|
  * |        | SPACE- | APP-   | WIN-   | TAB-   |        |        |        |        | HOME   | PG UP  |        |        |        |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------+--------|
- * |        | SPACE+ | APP+   | WIN+   | TAB+   |        |        |        |        | LEFT   | DOWN   | UP     | RIGHT  | ^^^^^^ |        |
+ * |        | SPACE+ | APP+   | WIN+   | TAB+   | TAB2+  |        |        |        | LEFT   | DOWN   | UP     | RIGHT  | ^^^^^^ |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
- * |        | SPACE- | APP-   | WIN-   | TAB-   |        |        |        |        | END    | PG DN  |        |        |        |        |
+ * |        | SPACE- | APP-   | WIN-   | TAB-   | TAB2-  |        |        |        | END    | PG DN  |        |        |        |        |
  * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
  * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
  * '--------------------------------------------------------------------------------------------------------------------------------------'
@@ -136,8 +138,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_NV] = { /* NAVIGATION */ 
   { _______, SPC_ONE, SPC_TWO, SPC_THR, SPC_FOR, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
   { _______, _______, PRV_APP, PRV_WIN, PRV_TAB, _______, _______, _______, _______, KC_HOME, KC_PGUP, _______, _______, _______, _______},
-  { _______, _______, NXT_APP, NXT_WIN, NXT_TAB, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______},
-  { _______, _______, PRV_APP, PRV_WIN, PRV_TAB, _______, _______, _______, _______, KC_END , KC_PGDN, _______, _______, _______, _______},
+  { _______, _______, NXT_APP, NXT_WIN, NXT_TAB, NXT_ATB, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______},
+  { _______, _______, PRV_APP, PRV_WIN, PRV_TAB, PRV_ATB, _______, _______, _______, KC_END , KC_PGDN, _______, _______, _______, _______},
   { _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
  },
 
