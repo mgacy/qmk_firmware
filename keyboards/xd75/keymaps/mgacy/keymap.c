@@ -32,7 +32,17 @@
 #define HPR_ESC   ALL_T(KC_ESC)       // Tap for Escape, hold for Hyper (Cmnd+Ctrl+Opt+Shift)
 #define MEH_GRV   MEH_T(KC_GRV)       // Tap for Backtick, hold for Meh (Ctrl+Opt+Shift)
 #define NAV_SCL   LT(_NV, KC_SCLN)    // Tap for semicolon, hold for NAV layer
-
+// Navigation
+#define NXT_APP   LGUI(KC_TAB)        // MAC: switch to next application
+#define PRV_APP   LGUI(S(KC_TAB))     // MAC: switch to prev application
+#define NXT_WIN   LGUI(KC_GRV)        // MAC: switch to next window within an application
+#define PRV_WIN   LGUI(S(KC_GRV))     // MAC: switch to prev window within an application
+#define NXT_TAB   LCTL(KC_TAB)        // MAC: switch to next tab within an application
+#define PRV_TAB   LCTL(S(KC_TAB))     // MAC: switch to prev tab within an application
+#define SPC_ONE   LCTL(KC_1)          // MAC: switch to space 1
+#define SPC_TWO   LCTL(KC_2)          // MAC: switch to space 2
+#define SPC_THR   LCTL(KC_3)          // MAC: switch to space 3
+#define SPC_FOR   LCTL(KC_4)          // MAC: switch to space 4
 // Aliases
 #define BRGT_UP   KC_PAUSE            // MAC: increase screen brightness
 #define BRGT_DN   KC_SCROLLLOCK       // MAC: decrease screen brightness
@@ -110,23 +120,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* NAVIGATION
  * .--------------------------------------------------------------------------------------------------------------------------------------.
- * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
+ * | SPACE1 | SPACE2 | SPACE3 | SPACE4 |        |        |        |        |        |        |        |        |        |        |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------|
- * |        |        |        |        |        |        |        |        |        | HOME   | PG UP  |        |        |        |        |
+ * |        | SPACE- | APP-   | WIN-   | TAB-   |        |        |        |        | HOME   | PG UP  |        |        |        |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------+--------|
- * |        |        |        |        |        |        |        |        |        | LEFT   | DOWN   | UP     | RIGHT  | ^^^^^^ |        |
+ * |        | SPACE+ | APP+   | WIN+   | TAB+   |        |        |        |        | LEFT   | DOWN   | UP     | RIGHT  | ^^^^^^ |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
- * |        |        |        |        |        |        |        |        |        | END    | PG DN  |        |        |        |        |
+ * |        | SPACE- | APP-   | WIN-   | TAB-   |        |        |        |        | END    | PG DN  |        |        |        |        |
  * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
  * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
  * '--------------------------------------------------------------------------------------------------------------------------------------'
  */
 
  [_NV] = { /* NAVIGATION */ 
-  { _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
-  { _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGUP, _______, _______, _______, _______},
-  { _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______},
-  { _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_END , KC_PGUP, _______, _______, _______, _______},
+  { SPC_ONE, SPC_TWO, SPC_THR, SPC_FOR, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
+  { _______, _______, PRV_APP, PRV_WIN, PRV_TAB, _______, _______, _______, _______, KC_HOME, KC_PGUP, _______, _______, _______, _______},
+  { _______, _______, NXT_APP, NXT_WIN, NXT_TAB, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______},
+  { _______, _______, PRV_APP, PRV_WIN, PRV_TAB, _______, _______, _______, _______, KC_END , KC_PGDN, _______, _______, _______, _______},
   { _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
  },
 
