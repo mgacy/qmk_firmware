@@ -34,8 +34,8 @@
 #define NAV_SCL   LT(_NV, KC_SCLN)    // Tap for semicolon, hold for NAV layer
 
 // Aliases
-#define BRGT_UP   KC_SCROLLLOCK       // MAC: increase screen brightness
-#define BRGT_DN   KC_PAUSE            // MAC: decrease screen brightness
+#define BRGT_UP   KC_PAUSE            // MAC: increase screen brightness
+#define BRGT_DN   KC_SCROLLLOCK       // MAC: decrease screen brightness
 #define MVOL_UP   KC__VOLUP           // MAC: increase volume
 #define MVOL_DN   KC__VOLDOWN         // MAC: decrease volume
 #define MVOL_MT   KC__MUTE            // MAC: mute volume
