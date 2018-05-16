@@ -26,16 +26,18 @@
 #define _RS 2
 #define _SY 3
 #define _NV 4
-#define _FN 5
-#define _MS 6
-#define _KB 7
+#define _TX 5
+#define _FN 6
+#define _MS 7
+#define _KB 8
 
-// Custom
+// Custom Aliases
 #define HPR_ESC   ALL_T(KC_ESC)       // Tap for Escape, hold for Hyper (Cmnd+Ctrl+Opt+Shift)
 #define MEH_GRV   MEH_T(KC_GRV)       // Tap for Backtick, hold for Meh (Ctrl+Opt+Shift)
 // Layers
 #define NAV_SCL   LT(_NV, KC_SCLN)    // Tap for semicolon, hold for NAVIGATION layer
 #define SY_KC_D   LT(_SY, KC_D)       // Tap for d, hold for SYMBOL layer
+#define TX_KC_F   LT(_TX, KC_F)       // Tap for f, hold for TEXT layer
 // Navigation
 #define NXT_APP   LGUI(KC_TAB)        // MAC: switch to next application
 #define PRV_APP   LGUI(S(KC_TAB))     // MAC: switch to prev application
@@ -49,12 +51,17 @@
 #define SPC_TWO   LCTL(KC_2)          // MAC: switch to space 2
 #define SPC_THR   LCTL(KC_3)          // MAC: switch to space 3
 #define SPC_FOR   LCTL(KC_4)          // MAC: switch to space 4
-// Aliases
+// System
 #define BRGT_UP   KC_PAUSE            // MAC: increase screen brightness
 #define BRGT_DN   KC_SCROLLLOCK       // MAC: decrease screen brightness
 #define MVOL_UP   KC__VOLUP           // MAC: increase volume
 #define MVOL_DN   KC__VOLDOWN         // MAC: decrease volume
 #define MVOL_MT   KC__MUTE            // MAC: mute volume
+// Text Manipulation
+#define SHFT_LT   LGUI(KC_LBRC)       // Shift left
+#define SHFT_RT   LGUI(KC_RBRC)       // Shift right
+#define MV_L_UP   LALT(LGUI(KC_LBRC)) // Xcode: move line up
+#define MV_L_DN   LALT(LGUI(KC_RBRC)) // Xcode: move line down
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -65,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | TAB    | Q      | W      | E      | R      | T      | -      | PG UP  | =      | Y      | U      | I      | O      | P      | '      |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
  * | ESC    | A      | S      | D      | F      | G      | [      | PG DN  | ]      | H      | J      | K      | L      | ;      | RETURN |
- * |-/HYPER-+--------+--------+-/SYMBL-+--------+--------+--------+--------+--------+--------+--------+--------+--------+-/NAV---+--------|
+ * |-/HYPER-+--------+--------+-/SYMBL-+-/TEXT--+--------+--------+--------+--------+--------+--------+--------+--------+-/NAV---+--------|
  * | LSHIFT | Z      | X      | C      | V      | B      | LOWER  | UP     | RAISE  | N      | M      | ,      | .      | /      | RSHIFT |
  * |-/(-----+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-/)-----|
  * | FN     | LCTRL  | LALT   | LGUI   | BACKSP | BACKSP | LEFT   | DOWN   | RIGHT  | SPACE  | SPACE  | RGUI   | ENTER  | ????   | MOUSE  |
@@ -75,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_QW] = { /* QWERTY */
   { MEH_GRV, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_HOME, KC_BSLS, KC_END , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC},
   { KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , KC_MINS, KC_PGUP, KC_EQL , KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_QUOT},
-  { HPR_ESC, KC_A   , KC_S   , SY_KC_D, KC_F   , KC_G   , KC_LBRC, KC_PGDN, KC_RBRC, KC_H   , KC_J   , KC_K   , KC_L   , NAV_SCL, KC_ENT },
+  { HPR_ESC, KC_A   , KC_S   , SY_KC_D, TX_KC_F, KC_G   , KC_LBRC, KC_PGDN, KC_RBRC, KC_H   , KC_J   , KC_K   , KC_L   , NAV_SCL, KC_ENT },
   { KC_LSPO, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , MO(_LW), KC_UP  , MO(_RS), KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSPC},  
   { MO(_FN), KC_LCTL, KC_LALT, KC_LCMD, KC_BSPC, KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_SPC , KC_SPC , KC_RCMD, KC_PENT, KC_PDOT, MO(_MS)},
  },
@@ -166,6 +173,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   { _______, _______, NXT_APP, NXT_WIN, NXT_TAB, NXT_ATB, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______},
   { _______, _______, PRV_APP, PRV_WIN, PRV_TAB, PRV_ATB, _______, _______, _______, KC_END , KC_PGDN, _______, _______, _______, _______},
   { _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RCMD, KC_LALT, _______, _______, _______, _______},
+ },
+
+/* TEXT MANIPULATION
+ * .--------------------------------------------------------------------------------------------------------------------------------------.
+ * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
+ * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------|
+ * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
+ * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------+--------|
+ * |        |        |        |        |        |        |        |        |        | SHFT L | MV L D | MV L U | SHFT R |        |        |
+ * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
+ * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
+ * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
+ * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
+ * '--------------------------------------------------------------------------------------------------------------------------------------'
+ */
+
+ [_TX] = {   
+  { _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
+  { _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
+  { _______, _______, _______, _______, _______, _______, _______, _______, _______, SHFT_LT, MV_L_DN, MV_L_UP, SHFT_RT, _______, _______},
+  { _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
+  { _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
  },
 
 /* FUNCTION
