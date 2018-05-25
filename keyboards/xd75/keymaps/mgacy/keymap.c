@@ -65,6 +65,22 @@
 #define MV_L_UP   LALT(LGUI(KC_LBRC)) // Xcode: move line up
 #define MV_L_DN   LALT(LGUI(KC_RBRC)) // Xcode: move line down
 
+// Tap Dance Declarations
+enum {
+  TD_CURLY = 0,
+  TD_PAREN,
+  TD_BRCKT,
+  TD_ANGLE,
+  TD_QUOTE
+};
+
+// Tap Dance Aliases
+#define TD_CRLY   TD(TD_CURLY)        // Tap once for {, twice for }
+#define TD_PARN   TD(TD_PAREN)        // Tap once for (, twice for )
+#define TD_BRKT   TD(TD_BRCKT)        // Tap once for [, twice for ]
+#define TD_ANBK   TD(TD_ANGLE)        // Tap once for <, twice for >
+#define TD_QUOT   TD(TD_QUOTE)        // Tap once for ', twice for "
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QWERTY
@@ -135,24 +151,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* SYMBOL
  * .--------------------------------------------------------------------------------------------------------------------------------------.
- * |        |        |        |        |        |        |        |        | %      | ^      | &      | *      | -      | +      |        |
+ * |        |        |        |        |        |        |        |        | %      | ^      | &      | *      |        |        |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------|
- * |        |        |        |        |        |        |        |        | +      | ->     | "      | !      | @      | _      |        |
+ * |        |        |        |        |        |        |        |        |        | +      | ' / "  | !      | @      | _      |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------+--------|
- * |        |        |        | ^^^^^^ |        |        |        |        | -      |        | {      | (      | [      | :      |        |
+ * |        |        |        | ^^^^^^ |        |        |        |        |        | -      | { / }  | ( / )  | [ / ]  | :      |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
- * |        |        |        |        |        |        |        |        | |      | \      | }      | )      | ]      | ?      | $      |
+ * |        |        |        |        |        |        |        |        | |      | \      | '      | < / >  |        | ?      | $      |
  * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
- * |        |        |        |        |        |        |        |        | #      | =      |        | <      | >      | /      |        |
+ * |        |        |        |        |        |        |        |        | #      | =      |        |        |        | /      |        |
  * '--------------------------------------------------------------------------------------------------------------------------------------'
  */
 
  [_SY] = { /* SYMBOL */ 
-  { _______, _______, _______, _______, _______, _______, _______, _______, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_PLUS, _______},
-  { _______, _______, _______, _______, _______, _______, _______, _______, KC_PLUS, _______, KC_DQT , KC_EXLM, KC_AT  , KC_UNDS, _______},
-  { _______, _______, _______, _______, _______, _______, _______, _______, KC_MINS, _______, KC_LCBR, KC_LPRN, KC_LBRC, KC_COLN, _______},
-  { _______, _______, _______, _______, _______, _______, _______, _______, KC_PIPE, KC_BSLS, KC_RCBR, KC_RPRN, KC_RBRC, KC_QUES, KC_DLR },
-  { _______, _______, _______, _______, _______, _______, _______, _______, KC_HASH, KC_EQL , _______, KC_LT  , KC_GT  , KC_SLSH, _______},
+  { _______, _______, _______, _______, _______, _______, _______, _______, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, _______, _______, _______},
+  { _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PLUS, TD_QUOT, KC_EXLM, KC_AT  , KC_UNDS, _______},
+  { _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MINS, TD_CRLY, TD_PARN, TD_BRKT, KC_COLN, _______},
+  { _______, _______, _______, _______, _______, _______, _______, _______, KC_PIPE, KC_BSLS, KC_QUOT, TD_ANBK, _______, KC_QUES, KC_DLR },
+  { _______, _______, _______, _______, _______, _______, _______, _______, KC_HASH, KC_EQL , _______, _______, _______, KC_SLSH, _______},
  },
 
 /* NAVIGATION
@@ -268,4 +284,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const uint16_t PROGMEM fn_actions[] = {
 
+};
+
+// Tap Dance
+qk_tap_dance_action_t tap_dance_actions[] = {
+  // Tap once for {, twice for }
+  [TD_CURLY] = ACTION_TAP_DANCE_DOUBLE(KC_LCBR, KC_RCBR),
+  // Tap once for (, twice for )
+  [TD_PAREN] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
+  // Tap once for [, twice for ]
+  [TD_BRCKT] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
+  // Tap once for <, twice for >
+  [TD_ANGLE] = ACTION_TAP_DANCE_DOUBLE(KC_LABK, KC_RABK),
+  // Tap once for ', twice for "
+  [TD_QUOTE] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_DQUO)
 };
