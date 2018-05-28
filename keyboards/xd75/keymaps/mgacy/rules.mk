@@ -13,6 +13,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+
+# QMK Build Options
+TAP_DANCE_ENABLE = yes      # Enable tap dance functionality
+
 ifndef QUANTUM_DIR
 	include ../../../../Makefile
 endif
