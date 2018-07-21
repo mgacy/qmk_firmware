@@ -37,7 +37,8 @@
 #define MEH_GRV   MEH_T(KC_GRV)       // Tap for Backtick, hold for Meh (Ctrl+Opt+Shift)
 #define CMD_SPC   LGUI_T(KC_SPC)      // Tap for Spacebar, hold for Command
 #define OPT_SPC   LALT_T(KC_SPC)      // Tap for Spacebar, hold for Option
-#define CTL_BSP   LCTL_T(KC_BSPC)     // Tap for Backspace, hold for Control  
+// #define SFT_BSP   LCTL_T(KC_LSFT)     // Tap for Backspace, hold for Shift
+#define CTL_BSP   LCTL_T(KC_BSPC)     // Tap for Backspace, hold for Control
 //#define CTL_ENT   LCTL_T(KC_ENT)      // Tap for Enter, hold for Control
 // Layers
 #define NAV_SCL   LT(_NV, KC_SCLN)    // Tap for semicolon, hold for NAVIGATION layer
