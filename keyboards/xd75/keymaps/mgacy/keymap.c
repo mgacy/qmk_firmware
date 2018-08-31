@@ -45,6 +45,7 @@
 #define LW_KC_A   LT(_LW, KC_A)       // Tap for a, hold for LOWER layer
 #define SY_KC_D   LT(_SY, KC_D)       // Tap for d, hold for SYMBOL layer
 #define TX_KC_F   LT(_TX, KC_F)       // Tap for f, hold for TEXT MANIPULATION layer
+#define RS_KC_M   LT(_RS, KC_M)       // Tap for m, hold for RAISE layer
 #define TS_KC_Z   LT(_TS, KC_Z)       // Tap for z, hold for TEXT SELECTION layer
 // Navigation
 #define NXT_APP   LGUI(KC_TAB)        // MAC: switch to next application
@@ -121,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | ESC    | A      | S      | D      | F      | G      | [      | PG DN  | ]      | H      | J      | K      | L      | ;      | RETURN |
  * |-/HYPER-+-/LOWER-+--------+-/SYMBL-+-/TEXT--+--------+--------+--------+--------+--------+--------+--------+--------+-/NAV---+--------|
  * | LSHIFT | Z      | X      | C      | V      | B      | LOWER  | UP     | RAISE  | N      | M      | ,      | .      | /      | RSHIFT |
- * |-/(-----+-/SLECT-+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-/)-----|
+ * |-/(-----+-/SLECT-+--------+--------+--------+--------+--------+--------+--------+--------+-/RAISE-+--------+--------+--------+-/)-----|
  * | FN     | LCTRL  | LALT   | LGUI   | BACKSP | BACKSP | LEFT   | DOWN   | RIGHT  | SPACE  | SPACE  | RGUI   | ENTER  | ????   | MOUSE  |
  * '----------------------------------------------/CTRL-------------------------------/CMND----/OPT---------------------------------------'
  */
@@ -129,8 +130,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_QW] = { /* QWERTY */
   { MEH_GRV, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_HOME, KC_BSLS, KC_END , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC},
   { KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , KC_MINS, KC_PGUP, KC_EQL , KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_QUOT},
-  { KC_LSPO, TS_KC_Z, KC_X   , KC_C   , KC_V   , KC_B   , MO(_LW), KC_UP  , MO(_RS), KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSPC},  
   { HPR_ESC, LW_KC_A, KC_S   , SY_KC_D, TX_KC_F, KC_G   , KC_LBRC, KC_PGDN, KC_RBRC, KC_H   , KC_J   , KC_K   , KC_L   , NAV_SCL, KC_ENT },
+  { KC_LSPO, TS_KC_Z, KC_X   , KC_C   , KC_V   , KC_B   , MO(_LW), KC_UP  , MO(_RS), KC_N   , RS_KC_M, KC_COMM, KC_DOT , KC_SLSH, KC_RSPC},  
   { MO(_FN), KC_LCTL, KC_LALT, KC_LCMD, KC_BSPC, CTL_BSP, KC_LEFT, KC_DOWN, KC_RGHT, CMD_SPC, OPT_SPC, KC_RCMD, KC_PENT, KC_PDOT, MO(_MS)},
  },
 
