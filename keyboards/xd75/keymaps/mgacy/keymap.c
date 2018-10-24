@@ -115,11 +115,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QWERTY
  * .--------------------------------------------------------------------------------------------------------------------------------------.
- * | `      | 1      | 2      | 3      | 4      | 5      | HOME   | \      | END    | 6      | 7      | 8      | 9      | 0      | BACKSP |
+ * | `      | 1      | 2      | 3      | 4      | 5      | -      | \      | =      | 6      | 7      | 8      | 9      | 0      | BACKSP |
  * |-/MEH---+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * | TAB    | Q      | W      | E      | R      | T      | -      | PG UP  | =      | Y      | U      | I      | O      | P      | '      |
+ * | TAB    | Q      | W      | E      | R      | T      | INS    | HOME   | PG UP  | Y      | U      | I      | O      | P      | '      |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * | ESC    | A      | S      | D      | F      | G      | [      | PG DN  | ]      | H      | J      | K      | L      | ;      | RETURN |
+ * | ESC    | A      | S      | D      | F      | G      | DEL    | END    | PG DN  | H      | J      | K      | L      | ;      | RETURN |
  * |-/HYPER-+-/LOWER-+--------+-/SYMBL-+-/TEXT--+--------+--------+--------+--------+--------+--------+--------+--------+-/NAV---+--------|
  * | LSHIFT | Z      | X      | C      | V      | B      | LOWER  | UP     | RAISE  | N      | M      | ,      | .      | /      | RSHIFT |
  * |-/(-----+-/SLECT-+--------+--------+--------+--------+--------+--------+--------+--------+-/RAISE-+--------+--------+--------+-/)-----|
@@ -128,9 +128,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 	
  [_QW] = { /* QWERTY */
-  { MEH_GRV, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_HOME, KC_BSLS, KC_END , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC},
-  { KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , KC_MINS, KC_PGUP, KC_EQL , KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_QUOT},
-  { HPR_ESC, LW_KC_A, KC_S   , SY_KC_D, TX_KC_F, KC_G   , KC_LBRC, KC_PGDN, KC_RBRC, KC_H   , KC_J   , KC_K   , KC_L   , NAV_SCL, KC_ENT },
+  { MEH_GRV, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_MINS, KC_BSLS, KC_EQL , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC},
+  { KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , KC_INS , KC_HOME, KC_PGUP, KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_QUOT},
+  { HPR_ESC, LW_KC_A, KC_S   , SY_KC_D, TX_KC_F, KC_G   , KC_DEL , KC_END , KC_PGDN, KC_H   , KC_J   , KC_K   , KC_L   , NAV_SCL, KC_ENT },
   { KC_LSPO, TS_KC_Z, KC_X   , KC_C   , KC_V   , KC_B   , MO(_LW), KC_UP  , MO(_RS), KC_N   , RS_KC_M, KC_COMM, KC_DOT , KC_SLSH, KC_RSPC},  
   { MO(_FN), KC_LCTL, KC_LALT, KC_LCMD, KC_BSPC, CTL_BSP, KC_LEFT, KC_DOWN, KC_RGHT, CMD_SPC, OPT_SPC, KC_RCMD, KC_PENT, KC_PDOT, MO(_MS)},
  },
