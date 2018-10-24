@@ -37,6 +37,7 @@
 #define MEH_GRV   MEH_T(KC_GRV)       // Tap for Backtick, hold for Meh (Ctrl+Opt+Shift)
 #define CMD_SPC   LGUI_T(KC_SPC)      // Tap for Spacebar, hold for Command
 #define OPT_SPC   LALT_T(KC_SPC)      // Tap for Spacebar, hold for Option
+// #define CMD_EQL   LGUI_T(KC_EQL)      // Tap for Equal, hold for Command
 // #define SFT_BSP   LCTL_T(KC_LSFT)     // Tap for Backspace, hold for Shift
 #define CTL_BSP   LCTL_T(KC_BSPC)     // Tap for Backspace, hold for Control
 //#define CTL_ENT   LCTL_T(KC_ENT)      // Tap for Enter, hold for Control
@@ -187,9 +188,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------+--------|
  * |        |        |        | ^^^^^^ |        |        |        |        |        | -      | { / }  | ( / )  | [ / ]  | :      |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
- * |        |        |        |        |        |        |        |        | |      | \      | '      | < / >  |        | ?      | $      |
+ * |        |        |        |        |        |        |        |        | |      | \      | '      | < / >  | *      | ?      | $      |
  * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
- * |        |        |        |        |        |        |        |        | #      | =      |        |        |        | /      |        |
+ * |        |        |        |        |        |        |        |        | #      | =      |        |        | *      | /      |        |
  * '--------------------------------------------------------------------------------------------------------------------------------------'
  */
 
@@ -197,8 +198,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   { _______, _______, _______, _______, _______, _______, _______, _______, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, _______, _______, _______},
   { _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PLUS, KC_DQT , KC_EXLM, KC_AT  , KC_UNDS, _______},
   { _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MINS, TD_CRLY, TD_PARN, TD_BRKT, KC_COLN, _______},
-  { _______, _______, _______, _______, _______, _______, _______, _______, KC_PIPE, KC_BSLS, KC_QUOT, TD_ANBK, _______, KC_QUES, KC_DLR },
-  { _______, _______, _______, _______, _______, _______, _______, _______, KC_HASH, KC_EQL , _______, _______, _______, KC_SLSH, _______},
+  { _______, _______, _______, _______, _______, _______, _______, _______, KC_PIPE, KC_BSLS, KC_QUOT, TD_ANBK, KC_ASTR, KC_QUES, KC_DLR },
+  { _______, _______, _______, _______, _______, _______, _______, _______, KC_HASH, KC_EQL , _______, _______, KC_ASTR, KC_SLSH, _______},
  },
 
 /* NAVIGATION
