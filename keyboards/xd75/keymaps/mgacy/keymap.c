@@ -103,7 +103,6 @@ enum {
   TD_PAREN,
   TD_BRCKT,
   TD_ANGLE
-  // TD_QUOTE
 };
 
 // Tap Dance Aliases
@@ -111,7 +110,6 @@ enum {
 #define TD_PARN   TD(TD_PAREN)        // Tap once for (, twice for )
 #define TD_BRKT   TD(TD_BRCKT)        // Tap once for [, twice for ]
 #define TD_ANBK   TD(TD_ANGLE)        // Tap once for <, twice for >
-// #define TD_QUOT   TD(TD_QUOTE)        // Tap once for ', twice for "
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -350,6 +348,4 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_BRCKT] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
   // Tap once for <, twice for >
   [TD_ANGLE] = ACTION_TAP_DANCE_DOUBLE(KC_LABK, KC_RABK)
-  // Tap once for ', twice for "
-  // [TD_QUOTE] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_DQUO)
 };
