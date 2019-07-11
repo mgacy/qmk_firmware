@@ -62,6 +62,8 @@
 #define SPC_THR   LCTL(KC_3)          // MAC: switch to space 3
 #define SPC_FOR   LCTL(KC_4)          // MAC: switch to space 4
 #define MSSN_CL   LCAG(KC_F3)         // MAC: Mission Control (Custom: Ctrl+Opt+Cmnd+F3)
+#define BACK      LGUI(KC_LBRC)       // MAC: Back
+#define FRWD      LGUI(KC_RBRC)       // MAC: Forward
 // System
 #define BRGT_UP   KC_PAUSE            // MAC: increase screen brightness
 #define BRGT_DN   KC_SCROLLLOCK       // MAC: decrease screen brightness
@@ -205,11 +207,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * .--------------------------------------------------------------------------------------------------------------------------------------.
  * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------|
- * |        | SPACE1 | SPACE2 | SPACE3 | SPACE4 |        |        |        |        | HOME   | PG UP  |        |        |        |        |
+ * |        | SPACE1 | SPACE2 | SPACE3 | SPACE4 |        |        |        |        | HOME   | PG UP  | BACK   |        |        |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------+--------|
  * |        | SPACE+ | APP+   | WIN+   | TAB+   | TAB2+  |        |        |        | LEFT   | DOWN   | UP     | RIGHT  | ^^^^^^ |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
- * |        | SPACE- | APP-   | WIN-   | TAB-   | TAB2-  |        |        |        | END    | PG DN  |        |        |        |        |
+ * |        | SPACE- | APP-   | WIN-   | TAB-   | TAB2-  |        |        |        | END    | PG DN  | FORWRD |        |        |        |
  * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
  * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
  * '--------------------------------------------------------------------------------------------------------------------------------------'
