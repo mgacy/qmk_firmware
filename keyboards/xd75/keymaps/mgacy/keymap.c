@@ -104,7 +104,8 @@ enum {
   TD_CURLY = 0,
   TD_PAREN,
   TD_BRCKT,
-  TD_ANGLE
+  TD_ANGLE,
+  TD_CMMNT
 };
 
 // Tap Dance Aliases
@@ -112,6 +113,7 @@ enum {
 #define TD_PARN   TD(TD_PAREN)        // Tap once for (, twice for )
 #define TD_BRKT   TD(TD_BRCKT)        // Tap once for [, twice for ]
 #define TD_ANBK   TD(TD_ANGLE)        // Tap once for <, twice for >
+#define TD_CMNT   TD(TD_CMMNT)        // Tap once for /*, twice for */, thrice for """
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -191,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
  * |        |        |        |        |        |        |        |        | |      | \      | '      | < / >  | *      | ?      | $      |
  * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
- * |        |        |        |        |        |        |        |        | #      | =      |        |        | *      | /      |        |
+ * |        |        |        |        |        |        |        |        | #      | =      |        |        | CMMNT  | /      |        |
  * '--------------------------------------------------------------------------------------------------------------------------------------'
  */
 
@@ -200,7 +202,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   { _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PLUS, KC_DQT , KC_EXLM, KC_AT  , KC_UNDS, KC_AMPR},
   { _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MINS, TD_CRLY, TD_PARN, TD_BRKT, KC_COLN, _______},
   { _______, _______, _______, _______, _______, _______, _______, _______, KC_PIPE, KC_BSLS, KC_QUOT, TD_ANBK, KC_ASTR, KC_QUES, KC_DLR },
-  { _______, _______, _______, _______, _______, _______, _______, _______, KC_HASH, KC_EQL , _______, _______, KC_ASTR, KC_SLSH, _______},
+  { _______, _______, _______, _______, _______, _______, _______, _______, KC_HASH, KC_EQL , _______, _______, TD_CMNT, KC_SLSH, _______},
  },
 
 /* NAVIGATION
@@ -219,9 +221,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [_NV] = { /* NAVIGATION */ 
   { _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
-  { _______, SPC_ONE, SPC_TWO, SPC_THR, SPC_FOR, _______, _______, _______, _______, KC_HOME, KC_PGUP, _______, _______, _______, _______},
+  { _______, SPC_ONE, SPC_TWO, SPC_THR, SPC_FOR, _______, _______, _______, _______, KC_HOME, KC_PGUP, BACK   , _______, _______, _______},
   { _______, _______, NXT_APP, NXT_WIN, NXT_TAB, NXT_ATB, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______},
-  { _______, _______, PRV_APP, PRV_WIN, PRV_TAB, PRV_ATB, _______, _______, _______, KC_END , KC_PGDN, _______, _______, _______, _______},
+  { _______, _______, PRV_APP, PRV_WIN, PRV_TAB, PRV_ATB, _______, _______, _______, KC_END , KC_PGDN, FRWD   , _______, _______, _______},
   { _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
  },
 
@@ -318,7 +320,24 @@ const uint16_t PROGMEM fn_actions[] = {
 
 };
 
-// Tap Dance
+// Tap Dance - Functions
+
+// Tap Dance Comment
+void dance_comment (qk_tap_dance_state_t *state, void *user_data) {
+    switch (state->count) {
+    case 1:
+        SEND_STRING ("/*");
+        reset_tap_dance (state);
+    case 2:
+        SEND_STRING ("*/");
+        reset_tap_dance(state);
+    case 3:
+        SEND_STRING ("\"\"\"");
+        reset_tap_dance(state);
+    }
+}
+
+// Tap Dance - Implementation
 qk_tap_dance_action_t tap_dance_actions[] = {
   // Tap once for {, twice for }
   [TD_CURLY] = ACTION_TAP_DANCE_DOUBLE(KC_LCBR, KC_RCBR),
@@ -327,5 +346,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   // Tap once for [, twice for ]
   [TD_BRCKT] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
   // Tap once for <, twice for >
-  [TD_ANGLE] = ACTION_TAP_DANCE_DOUBLE(KC_LABK, KC_RABK)
+  [TD_ANGLE] = ACTION_TAP_DANCE_DOUBLE(KC_LABK, KC_RABK),
+  // Tap once for /*, twice for */
+  [TD_CMMNT] = ACTION_TAP_DANCE_FN(dance_comment)
 };
