@@ -1,0 +1,1 @@
+﻿# mgacy's Ergodash Keymap
